@@ -1,0 +1,204 @@
+{
+    "categories": [
+      {
+        "idCategory": "1",
+        "strCategory": "BiciPro1",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91423-52_CRUX-COMP-DOVGRY-METDKNVY_HERO_600x.progressive.webp.jpg?v=1725049960",
+      },
+      {
+        "idCategory": "2",
+        "strCategory": "BiciPro2",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/90323-00_EPIC-SW-PRPTNT-CHRM_HERO_600x.progressive.webp.jpg?v=1725048491",
+      },
+      {
+        "idCategory": "3",
+        "strCategory": "BiciPro3",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/N214TTCC-N7-SIDE-ALMA_H30_600x.progressive.jpg?v=1686674677",
+      },
+      {
+        "idCategory": "4",
+        "strCategory": "BiciPro4",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/WhatsAppImage2023-05-26at11.46.24AM_1800x1800_cdb3288d-5b09-42cc-81a4-6ab0ca3b569c_600x.progressive.webp.jpg?v=1693417702",
+      },
+      {
+        "idCategory": "5",
+        "strCategory": "BiciPro5",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/WhatsAppImage2023-05-26at11.46.24AM_1800x1800_cdb3288d-5b09-42cc-81a4-6ab0ca3b569c_600x.progressive.webp.jpg?v=1693417702",
+      },
+      {
+        "idCategory": "6",
+        "strCategory": "BiciPro6",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "7",
+        "strCategory": "BiciPro7",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "8",
+        "strCategory": "BiciPro8",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98021-36_KENEVO-SL-EXPERT-CARBON-29-BRSYYEL-BLK_HERO_600x.progressive.webp.jpg?v=1703433695",
+      },
+      {
+        "idCategory": "9",
+        "strCategory": "BiciPro9",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/specialized-epic-hardtail-comp--2024-iv-735035-1_331x.progressive.png.jpg?v=1725064655",
+      },
+      {
+        "idCategory": "10",
+        "strCategory": "BiciPro10",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/scott-addict-20-396089-1_331x.progressive.png.jpg?v=1726866129",
+      },
+      {
+        "idCategory": "11",
+        "strCategory": "BiciPro11",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/products/87e3RN9stgWqKJPeqh1GvJZOY_331x.progressive.jpg?v=1684265746",
+      },
+      {
+        "idCategory": "12",
+        "strCategory": "BiciPro12",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-32_CREO-SL-EXPERT-CARBON-EVO-GUN-WHTMTN_HERO_331x.progressive.webp.jpg?v=1719951679",
+      },
+      {
+        "idCategory": "13",
+        "strCategory": "BiciPro13",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-51_CREO-SL-COMP-CARBON-SMK-LTSIL_HERO_331x.progressive.webp.jpg?v=1719950621",
+      },
+      {
+        "idCategory": "14",
+        "strCategory": "BiciPro14",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/90323-00_EPIC-SW-PRPTNT-CHRM_HERO_331x.progressive.webp.jpg?v=1725048491",
+      },
+      {
+        "idCategory": "15",
+        "strCategory": "BiciPro15",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/WhatsAppImage2023-05-26at11.46.24AM_1800x1800_cdb3288d-5b09-42cc-81a4-6ab0ca3b569c_600x.progressive.webp.jpg?v=1693417702",
+      },
+      {
+        "idCategory": "16",
+        "strCategory": "BiciPro16",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "17",
+        "strCategory": "BiciPro17",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "18",
+        "strCategory": "BiciPro18",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98021-36_KENEVO-SL-EXPERT-CARBON-29-BRSYYEL-BLK_HERO_600x.progressive.webp.jpg?v=1703433695",
+      },
+      {
+        "idCategory": "19",
+        "strCategory": "BiciPro19",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/specialized-epic-hardtail-comp--2024-iv-735035-1_331x.progressive.png.jpg?v=1725064655",
+      },
+      {
+        "idCategory": "20",
+        "strCategory": "BiciPro20",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/scott-addict-20-396089-1_331x.progressive.png.jpg?v=1726866129",
+      },
+      {
+        "idCategory": "21",
+        "strCategory": "BiciPro21",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/products/87e3RN9stgWqKJPeqh1GvJZOY_331x.progressive.jpg?v=1684265746",
+      },
+      {
+        "idCategory": "22",
+        "strCategory": "BiciPro22",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-32_CREO-SL-EXPERT-CARBON-EVO-GUN-WHTMTN_HERO_331x.progressive.webp.jpg?v=1719951679",
+      },
+      {
+        "idCategory": "23",
+        "strCategory": "BiciPro23",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-51_CREO-SL-COMP-CARBON-SMK-LTSIL_HERO_331x.progressive.webp.jpg?v=1719950621",
+      },
+      {
+        "idCategory": "24",
+        "strCategory": "BiciPro24",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/90323-00_EPIC-SW-PRPTNT-CHRM_HERO_331x.progressive.webp.jpg?v=1725048491",
+      },
+      {
+        "idCategory": "25",
+        "strCategory": "BiciPro25",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/WhatsAppImage2023-05-26at11.46.24AM_1800x1800_cdb3288d-5b09-42cc-81a4-6ab0ca3b569c_600x.progressive.webp.jpg?v=1693417702",
+      },
+      {
+        "idCategory": "26",
+        "strCategory": "BiciPro26",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "27",
+        "strCategory": "BiciPro27",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "28",
+        "strCategory": "BiciPro28",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98021-36_KENEVO-SL-EXPERT-CARBON-29-BRSYYEL-BLK_HERO_600x.progressive.webp.jpg?v=1703433695",
+      },
+      {
+        "idCategory": "29",
+        "strCategory": "BiciPro29",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/specialized-epic-hardtail-comp--2024-iv-735035-1_331x.progressive.png.jpg?v=1725064655",
+      },
+      {
+        "idCategory": "30",
+        "strCategory": "BiciPro30",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/products/87e3RN9stgWqKJPeqh1GvJZOY_331x.progressive.jpg?v=1684265746",
+      },
+      {
+        "idCategory": "31",
+        "strCategory": "BiciPro31",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-32_CREO-SL-EXPERT-CARBON-EVO-GUN-WHTMTN_HERO_331x.progressive.webp.jpg?v=1719951679",
+      },
+      {
+        "idCategory": "32",
+        "strCategory": "BiciPro32",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-51_CREO-SL-COMP-CARBON-SMK-LTSIL_HERO_331x.progressive.webp.jpg?v=1719950621",
+      },
+      {
+        "idCategory": "33",
+        "strCategory": "BiciPro33",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/90323-00_EPIC-SW-PRPTNT-CHRM_HERO_331x.progressive.webp.jpg?v=1725048491",
+      },
+      {
+        "idCategory": "34",
+        "strCategory": "BiciPro34",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/WhatsAppImage2023-05-26at11.46.24AM_1800x1800_cdb3288d-5b09-42cc-81a4-6ab0ca3b569c_600x.progressive.webp.jpg?v=1693417702",
+      },
+      {
+        "idCategory": "35",
+        "strCategory": "BiciPro35",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "36",
+        "strCategory": "BiciPro36",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/91522-55_ROCKHOPPER-COMP-29-REDWD-SMK_HERO_600x.progressive.webp.jpg?v=1699501786",
+      },
+      {
+        "idCategory": "37",
+        "strCategory": "BiciPro37",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98021-36_KENEVO-SL-EXPERT-CARBON-29-BRSYYEL-BLK_HERO_600x.progressive.webp.jpg?v=1703433695",
+      },
+      {
+        "idCategory": "38",
+        "strCategory": "BiciPro38",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/specialized-epic-hardtail-comp--2024-iv-735035-1_331x.progressive.png.jpg?v=1725064655",
+      },
+      {
+        "idCategory": "39",
+        "strCategory": "BiciPro39",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-51_CREO-SL-COMP-CARBON-SMK-LTSIL_HERO_331x.progressive.webp.jpg?v=1719950621",
+      },
+      {
+        "idCategory": "40",
+        "strCategory": "BiciPro40",
+        "strCategoryThumb": "https://bicimarket.com.co/cdn/shop/files/98122-51_CREO-SL-COMP-CARBON-SMK-LTSIL_HERO_331x.progressive.webp.jpg?v=1719950621",
+      }         
+    ]
+  }
