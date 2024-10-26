@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+  	<link rel="stylesheet" href="cart.css">
+	<script src="./js/bicicletas.js"></script>
+  	<script src="./js/cartService.js" defer></script>
+	<script src="./js/cart.js" defer></script>
+	<title>Bicicletas puntoJson - Carrito</title>
+</head>
+<body>
+  <header>
+		<nav>
+			<a href="./index.html"><img src="./img/logo.png" alt="Logo" id="logo"></a>
+			<div>
+				<a href="#">MTB</a>
+				<a href="#">Ruta</a>
+				<a href="./cart.html" id="cart"><img src="./img/iconos/shopping-cart.png" alt=""><span id="cuenta-carrito">0</span></a>
+			</div>
+		</nav>
+	</header>
+	<main>
+		<p id="carrito-vacio">Ups! El carrito está vacío, <a href="./index.html">elige algunos productos</a></p>
+		<section id="cart-container">
+		</section>
+  	<section id="totales">
+    	<p>Total unidades: <span id="cantidad">0</span></p>
+    	<p>Total precio: $<span id="precio">0</span></p>
+    	<button id="comprar">Comprar</button>
+    	<button id="reiniciar">Reiniciar</button>
+  	</section>
+	</main>
+
+	<!-- Modal para la compra con tarjeta de crédito -->
+	<div id="modal-compra" class="modal" style="display: none;">
+		<div class="modal-content">
+			<span id="cerrar-modal">&times;</span>
+			<h2>Ingrese los detalles de su tarjeta</h2>
+			<form id="form-tarjeta">
+				<label for="nombre">Nombre en la tarjeta:</label>
+				<input type="text" id="nombre" required>
+				<small class="error" id="error-nombre"></small>
+
+				<label for="numero">Número de tarjeta:</label>
+				<input type="text" id="numero" required>
+				<small class="error" id="error-numero"></small>
+
+				<label for="expiracion">Fecha de expiración (MM/AA):</label>
+				<input type="text" id="expiracion" required>
+				<small class="error" id="error-expiracion"></small>
+
+				<label for="cvv">CVV:</label>
+				<input type="text" id="cvv" required>
+				<small class="error" id="error-cvv"></small>
+
+				<button type="submit">Confirmar compra</button>
+			</form>
+		</div>
+	</div>
+
+	<footer>
+		<p>Creado por Johan Vitonas <a href="https://youtube.com/@jsvitonas" target="_blank">jsvitonas</a></p>
+	</footer>
+
+	<script src="./js/compra.js" defer></script>
+</body>
+</html>
