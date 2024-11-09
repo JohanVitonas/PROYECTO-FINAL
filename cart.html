@@ -13,53 +13,91 @@
 </head>
 <body>
   <header>
-		<nav>
+		<nav class="navegador">
 			<a href="./index.html"><img src="./img/logo.png" alt="Logo" id="logo"></a>
-			<div>
-				<a href="#">MTB</a>
-				<a href="#">Ruta</a>
-				<a href="./cart.html" id="cart"><img src="./img/iconos/shopping-cart.png" alt=""><span id="cuenta-carrito">0</span></a>
+			<h1>PREMIUM BIKES</h1>
+			<div class="titulo-carrito">
+				<h1>Carrito de Compras</h1>
+				<a href="./cart.html" id="cart">
+					<img src="./img/iconos/shopping-cart.png" alt="Carrito">
+					<span id="cuenta-carrito">0</span>
+				</a>
 			</div>
 		</nav>
 	</header>
-	<main>
-		<p id="carrito-vacio">Ups! El carrito está vacío, <a href="./index.html">elige algunos productos</a></p>
-		<section id="cart-container">
-		</section>
-  	<section id="totales">
-    	<p>Total unidades: <span id="cantidad">0</span></p>
-    	<p>Total precio: $<span id="precio">0</span></p>
-    	<button id="comprar">Comprar</button>
-    	<button id="reiniciar">Reiniciar</button>
-  	</section>
-	</main>
+    <main class="principal">
+        <section class="tabla-carrito">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Filas de productos se agregarán dinámicamente -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">
+                            <label>
+                                <input type="checkbox" id="checkbox-domicilio">
+                                Incluir domicilio por $15,000
+                            </label>
+                        </td>
+                        <td>Total</td>
+                        <td id="total-precio">$0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <aside class="detalle-pago">
+            <h2>Detalles de Pago</h2>
+            <label for="tarjeta">Número de Tarjeta</label>
+            <input type="number" id="tarjeta" name="tarjeta" placeholder="13 a 19 dígitos" title="Debe tener entre 13 y 19 dígitos" required>
 
-	<!-- Modal para la compra con tarjeta de crédito -->
-	<div id="modal-compra" class="modal" style="display: none;">
-		<div class="modal-content">
-			<span id="cerrar-modal">&times;</span>
-			<h2>Ingrese los detalles de su tarjeta</h2>
-			<form id="form-tarjeta">
-				<label for="nombre">Nombre en la tarjeta:</label>
-				<input type="text" id="nombre" required>
-				<small class="error" id="error-nombre"></small>
+            <label for="fecha-exp">Fecha de Expiración</label>
+            <input type="text" id="fecha-exp" name="fechaExp" pattern="\d{2}/\d{2}" placeholder="MM/AA" title="Formato MM/AA" required>
 
-				<label for="numero">Número de tarjeta:</label>
-				<input type="text" id="numero" required>
-				<small class="error" id="error-numero"></small>
+            <label for="codigo-seguridad">Código de Seguridad</label>
+            <div class="input-codigo">
+                <input type="password" id="codigo-seguridad" name="codigo-seguridad" pattern="\d{3}" maxlength="3" title="Debe tener 3 dígitos" required>
+                <button type="button" class="btn-ocultar" onclick="alternarVisibilidad()">👁️</button>
+            </div>
 
-				<label for="expiracion">Fecha de expiración (MM/AA):</label>
-				<input type="text" id="expiracion" required>
-				<small class="error" id="error-expiracion"></small>
+            <label for="tipo-tarjeta">Tipo de Tarjeta</label>
+            <select id="tipo-tarjeta">
+                <option>MasterCard</option>
+                <option>Visa</option>
+                <option>Prepagada</option>
+            </select>
 
-				<label for="cvv">CVV:</label>
-				<input type="text" id="cvv" required>
-				<small class="error" id="error-cvv"></small>
+            <label for="pais-emision">País de Emisión</label>
+            <select id="pais-emision">
+                <option>Colombia</option>
+                <option>Estados Unidos</option>
+                <option>Canadá</option>
+                <option>España</option>
+                <option>Francia</option>
+                <option>Chile</option>
+                <option>Argentina</option>
+                <option>Inglaterra</option>
+                <option>Portugal</option>
+                <option>Brasil</option>
+            </select>
 
-				<button type="submit">Confirmar compra</button>
-			</form>
-		</div>
-	</div>
+            <label for="nombre-titular">Nombre del Titular</label>
+            <input type="text" id="nombre-titular" name="nombre-titular" title="Debe tener entre 13 y 19 dígitos">
+
+            <div class="contenedor-botones">
+                <button id="completar-compra">Confirmar Compra</button>
+                <button type="button" onclick="limpiarCampos()">Limpiar Campos</button>
+            </div>
+        </aside>
+    </main>
 
 	<footer>
 		<p>Creado por Johan Vitonas <a href="https://youtube.com/@jsvitonas" target="_blank">jsvitonas</a></p>

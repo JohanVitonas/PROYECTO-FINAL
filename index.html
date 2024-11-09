@@ -13,14 +13,25 @@
 </head>
 <body>
 	<header>
-		<nav>
+		<nav class="navegador">
 			<a href="./index.html"><img src="./img/logo.png" alt="Logo" id="logo"></a>
-			<div>
-				<a href="#">MTB</a>
-				<a href="#">Ruta</a>
+			<h1>PREMIUM BIKES</h1>
+			<select id="filtro1">
+			  <option value="">Filtrar por Categoría</option>
+			  <option value="suplementos">Suplementos</option>
+			  <option value="deportivo">Deportivo</option>
+			</select>
+			<select id="filtro-proveedor">
+			  <option value="">filtrar por proveedores</option>
+			  <option value="sport line">Sport Line</option>
+			  <option value="global line">Global Line</option>
+			</select>
+			<button id="filtrar-btn">Filtrar</button>
+			<button id="limpiar-filtros">Limpiar Filtros</button>
+			<div> 
 				<a href="./cart.html" id="cart"><img src="./img/iconos/shopping-cart.png" alt=""><span id="cuenta-carrito">0</span></a>
 			</div>
-		</nav>
+		  </nav>
 	</header>
 	<main>
 		<section id="productos-container">
