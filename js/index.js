@@ -6,7 +6,7 @@ function crearTarjetasProductosInicio(productos){
     const nuevaBicicleta = document.createElement("div");
     nuevaBicicleta.classList = "tarjeta-producto"
     nuevaBicicleta.innerHTML = `
-    <img src="./img/productos/${producto.id}.jpg" alt="Bicicleta 1">
+    <img src="../img/productos/${producto.id}.jpg" alt="Bicicleta 1">
     <h3>${producto.nombre}</h3>
     <p class="precio">$${producto.precio}</p>
     <button>Agregar al carrito</button>`
@@ -23,7 +23,4 @@ window.addEventListener("scroll", () => {
   }
 });
 
-function cargarMasProductos() {
-  // Lógica para agregar más productos al contenedor
-  crearTarjetasProductosInicio(bicicletas.slice(15)); // Ejemplo: cargando más elementos
-}
+

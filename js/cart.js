@@ -12,7 +12,7 @@ function crearFilasProductosCarrito() {
     productos.forEach((producto) => {
       const filaProducto = document.createElement("tr");
       filaProducto.innerHTML = `
-        <td><img src="./img/productos/${producto.id}.jpg" alt="${producto.nombre}" class="imagen-producto"></td>
+        <td><img src="../img/productos/${producto.id}.jpg" alt="${producto.nombre}" class="imagen-producto"></td>
         <td>${producto.nombre}</td>
         <td>$${producto.precio}</td>
         <td>

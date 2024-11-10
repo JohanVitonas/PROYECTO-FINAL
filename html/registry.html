@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/registry.css">
+    <title>GLOBAL GYM REGISTRO</title>
+</head>
+<body>
+    <header class="encabezado"> 
+        <h1> BIENVENIDO A PREMIUM BIKES</h1>
+        <img class="logo" src="../img/logo.png" alt="imagen logo">
+        <article class="indicacion"> 
+            <p> Completa el registro para ir a los productos que tenemos para ti! </p>
+    </article>
+    </header>
+    <main class="principal">
+        <form class="registro">
+            <label  for="nombre-comprador">Nombre del Comprador</label><br>
+            <input type="text" id="nComprador" name="nombre-comprador" /><br>
+            <label  for="presupuesto-maximo"> Presupuesto Maximo en pesos $</label><br>
+            <input type="number" id="pMaximo" name="presupuesto-maximo" /><br>
+            <label  for="cantidad-maximo"> Cantidad Maxima</label><br>
+            <input type="number" id="cMaxima" name="presupuesto-maximo" /><br>
+            <label  for="cantidad-maximo"> Direccion</label><br>
+            <input type="text" id="direccion" name="direccion" /><br>
+            <span>
+                <label  for="estado"> Como desea recibir su compra?</label>
+                <input type="radio" name="estado" value="domicilio"> Domicilio
+                <input type="radio" name="estado" value="tienda"> Retiro en Tienda  
+            </span>
+        </form>
+    </main>
+    <nav class="navegador"> 
+        <a id="iniciar-Compra" href="../html/listadoProductos.html"> Iniciar  Compra</a>
+       <button onclick="limpiarCampos()"> Limpiar Registro </button>
+    </nav>
+    <footer class="pie-pagina"><p> Creado por Johan Vitonas </p></footer>
+
+    <script src="../js/registry.js"></script>
+</body>
+</html>
