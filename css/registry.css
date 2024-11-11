@@ -109,3 +109,21 @@ footer p {
     font-size: 14px;
     color: #333333;
 }
+
+#logo {
+    display: block;
+    margin: 0 auto; /* Centra horizontalmente */
+    width: 150px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene la proporción */
+    transition: transform 0.3s; /* Animación al pasar el mouse */
+}
+
+#logo:hover {
+    transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+}
+
+.encabezado {
+    text-align: center; /* Centra el contenido del encabezado */
+    padding: 20px;
+    background-color: #f8f8f8; /* Color de fondo opcional */
+}

@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/index.css">
-	<script src="../js/bicicletas.js"></script>
 	<script src="../js/cartService.js" defer></script>
 	<script src="../js/index.js" defer></script>
 	<title>Bicicletas puntoJson</title>
@@ -14,28 +13,41 @@
 <body>
 	<header>
 		<nav class="navegador">
-			<a href="../html/index.html"><img src="../img/logo.png" alt="Logo" id="logo"></a>
+			<a href="../html/registry.html"><img src="../img/logo.png" alt="Logo" id="logo"></a>
 			<h1>PREMIUM BIKES</h1>
 			<select id="filtro1">
 			  <option value="">Filtrar por Categoría</option>
-			  <option value="suplementos">Suplementos</option>
-			  <option value="deportivo">Deportivo</option>
+			  <option value="suplemento">Suplemento</option>
+			  <option value="repuesto">Repuesto</option>
+			  <option value="montaña">Montaña</option>
+			  <option value="carretera">Carretera</option>
+			  <option value="ciudad">Ciudad</option>
 			</select>
 			<select id="filtro-proveedor">
-			  <option value="">filtrar por proveedores</option>
-			  <option value="sport line">Sport Line</option>
-			  <option value="global line">Global Line</option>
+			  <option value="">Filtrar por Proveedores</option>
+			  <option value="Sport Pro">Sport Pro</option>
+			  <option value="City Wheels">City Wheels</option>
+			  <option value="Velocity Co.">Velocity Co.</option>
+			  <option value="Green Wheels">Green Wheels</option>
+			  <option value="Alpine Sports">Alpine Sports</option>
 			</select>
 			<button id="filtrar-btn">Filtrar</button>
 			<button id="limpiar-filtros">Limpiar Filtros</button>
 			<div> 
 				<a href="../html/cart.html" id="cart"><img src="../img/iconos/shopping-cart.png" alt=""><span id="cuenta-carrito">0</span></a>
 			</div>
-		  </nav>
+			<button id="cancelar-compra">Cancelar Compra</button>
+			<button id="completar-compra">Completar Compra</button>
+		</nav>
 	</header>
 	<main>
-		<section id="productos-container">
-		</section>
+		<section id="productos-container"></section>
+		<div id="detalle-producto" class="modal">
+			<div class="modal-content">
+				<span class="cerrar-modal">&times;</span>
+				<div id="contenido-detalle"></div>
+			</div>
+		</div>
 	</main>
 	<footer>
 		<p>Creado por Johan Vitonas <a href="https://youtube.com/@jsvitonas" target="_blank">jsvitonas</a></p>

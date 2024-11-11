@@ -1,121 +1,71 @@
-const contenedorTarjetas = document.querySelector("tbody");
-const cantidadElement = document.getElementById("cantidad");
-const precioElement = document.getElementById("total-precio");
-const carritoVacioElement = document.getElementById("carrito-vacio");
-const totalesContainer = document.querySelector(".tabla-carrito tfoot");
+// Función para cargar productos del carrito desde localStorage y mostrarlos en la tabla
+function cargarCarrito() {
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  const tbody = document.querySelector('.tabla-carrito tbody');
+  const totalPrecioElement = document.getElementById('total-precio');
+  let totalPrecio = 0;
 
-/** Crea las filas de productos en la tabla teniendo en cuenta lo guardado en localStorage */
-function crearFilasProductosCarrito() {
-  contenedorTarjetas.innerHTML = "";
-  const productos = JSON.parse(localStorage.getItem("bicicletas"));
-  if (productos && productos.length > 0) {
-    productos.forEach((producto) => {
-      const filaProducto = document.createElement("tr");
-      filaProducto.innerHTML = `
-        <td><img src="../img/productos/${producto.id}.jpg" alt="${producto.nombre}" class="imagen-producto"></td>
-        <td>${producto.nombre}</td>
-        <td>$${producto.precio}</td>
-        <td>
-          <button class="btn-restar">-</button>
-          <span class="cantidad">${producto.cantidad}</span>
-          <button class="btn-agregar">+</button>
-        </td>
-        <td><button class="btn-eliminar">🗑️</button></td>
+  tbody.innerHTML = ''; // Limpiar contenido previo
+
+  carrito.forEach(producto => {
+      const fila = document.createElement('tr');
+      fila.innerHTML = `
+          <td><img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px; height: auto;"></td>
+          <td>${producto.nombre}</td>
+          <td>$${producto.precio.toLocaleString('es-CO')}</td>
+          <td>${producto.cantidad}</td>
+          <td><button class="eliminar-btn" data-id="${producto.id}">🗑️</button></td>
       `;
-      contenedorTarjetas.appendChild(filaProducto);
 
-      // Eventos para restar y sumar cantidades
-      filaProducto.querySelector(".btn-restar").addEventListener("click", (e) => {
-        const cantidadElement = e.target.parentElement.querySelector(".cantidad");
-        cantidadElement.innerText = restarAlCarrito(producto);
-        actualizarFilasProductosCarrito();
-        actualizarTotales();
-      });
+      tbody.appendChild(fila);
 
-      filaProducto.querySelector(".btn-agregar").addEventListener("click", (e) => {
-        const cantidadElement = e.target.parentElement.querySelector(".cantidad");
-        cantidadElement.innerText = agregarAlCarrito(producto);
-        actualizarTotales();
-      });
+      totalPrecio += producto.precio * producto.cantidad;
+  });
 
-      // Evento para eliminar el producto del carrito
-      filaProducto.querySelector(".btn-eliminar").addEventListener("click", () => {
-        eliminarDelCarrito(producto);
-        crearFilasProductosCarrito();
-        actualizarTotales();
-      });
-    });
-  }
-  revisarMensajeVacio();
-  actualizarTotales();
-  actualizarNumeroCarrito();
+  // Verificar si se incluye el costo de domicilio
+  const checkboxDomicilio = document.getElementById('checkbox-domicilio');
+  checkboxDomicilio.addEventListener('change', function() {
+      if (this.checked) {
+          totalPrecio += 15000;
+      } else {
+          totalPrecio -= 15000;
+      }
+      totalPrecioElement.textContent = `$${totalPrecio.toLocaleString('es-CO')}`;
+  });
+
+  totalPrecioElement.textContent = `$${totalPrecio.toLocaleString('es-CO')}`;
 }
 
-crearFilasProductosCarrito();
+// Función para eliminar un producto del carrito
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('eliminar-btn')) {
+      const productoId = e.target.getAttribute('data-id');
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-/** Actualiza el total de precio y unidades de la página del carrito */
-function actualizarTotales() {
-  const productos = JSON.parse(localStorage.getItem("bicicletas"));
-  let cantidad = 0;
-  let precio = 0;
-  if (productos && productos.length > 0) {
-    productos.forEach((producto) => {
-      cantidad += producto.cantidad;
-      precio += producto.precio * producto.cantidad;
-    });
-  }
-  cantidadElement.innerText = cantidad;
-  precioElement.innerText = `$${precio.toLocaleString()}`;
-  if (precio === 0) {
-    reiniciarCarrito();
-    revisarMensajeVacio();
-  }
-}
+      carrito = carrito.filter(producto => producto.id != productoId);
 
-document.getElementById("reiniciar").addEventListener("click", () => {
-  contenedorTarjetas.innerHTML = "";
-  reiniciarCarrito();
-  revisarMensajeVacio();
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      cargarCarrito(); // Recargar la tabla
+      alert('Producto eliminado del carrito.');
+  }
 });
 
-/** Muestra o esconde el mensaje de que no hay nada en el carrito */
-function revisarMensajeVacio() {
-  const productos = JSON.parse(localStorage.getItem("bicicletas"));
-  const carritoVacio = !productos || productos.length === 0;
-  carritoVacioElement.classList.toggle("escondido", !carritoVacio);
-  totalesContainer.classList.toggle("escondido", carritoVacio);
+// Función para limpiar campos de pago
+function limpiarCampos() {
+  document.getElementById('tarjeta').value = '';
+  document.getElementById('fecha-exp').value = '';
+  document.getElementById('codigo-seguridad').value = '';
+  document.getElementById('tipo-tarjeta').value = 'MasterCard';
+  document.getElementById('pais-emision').value = 'Colombia';
+  document.getElementById('nombre-titular').value = '';
 }
 
-/** Funciones auxiliares */
-function restarAlCarrito(producto) {
-  const productos = JSON.parse(localStorage.getItem("bicicletas"));
-  const productoActualizado = productos.find((item) => item.id === producto.id);
-  if (productoActualizado && productoActualizado.cantidad > 1) {
-    productoActualizado.cantidad--;
-  } else {
-    eliminarDelCarrito(producto);
-  }
-  localStorage.setItem("bicicletas", JSON.stringify(productos));
-  return productoActualizado ? productoActualizado.cantidad : 0;
-}
+// Función para confirmar la compra
+document.getElementById('completar-compra').onclick = function() {
+  alert('¡Compra completada exitosamente! Gracias por su compra.');
+  localStorage.removeItem('carrito'); // Limpiar el carrito después de la compra
+  cargarCarrito(); // Recargar la tabla para que quede vacía
+};
 
-function agregarAlCarrito(producto) {
-  const productos = JSON.parse(localStorage.getItem("bicicletas"));
-  const productoActualizado = productos.find((item) => item.id === producto.id);
-  if (productoActualizado) {
-    productoActualizado.cantidad++;
-  }
-  localStorage.setItem("bicicletas", JSON.stringify(productos));
-  return productoActualizado.cantidad;
-}
-
-function eliminarDelCarrito(producto) {
-  let productos = JSON.parse(localStorage.getItem("bicicletas"));
-  productos = productos.filter((item) => item.id !== producto.id);
-  localStorage.setItem("bicicletas", JSON.stringify(productos));
-}
-
-function reiniciarCarrito() {
-  localStorage.removeItem("bicicletas");
-  actualizarNumeroCarrito();
-}
+// Inicializar la carga del carrito al cargar la página
+document.addEventListener('DOMContentLoaded', cargarCarrito);
