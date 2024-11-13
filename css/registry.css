@@ -1,4 +1,3 @@
-/* registry.css */
 body {
     background-color: #ffffff;
     color: #333333;
@@ -108,4 +107,22 @@ footer p {
     margin: 0;
     font-size: 14px;
     color: #333333;
+}
+
+#logo {
+    display: block;
+    margin: 0 auto; 
+    width: 150px; 
+    height: auto; 
+    transition: transform 0.3s; 
+}
+
+#logo:hover {
+    transform: scale(1.1); 
+}
+
+.encabezado {
+    text-align: center; 
+    padding: 20px;
+    background-color: #f8f8f8; 
 }
