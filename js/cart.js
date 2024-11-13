@@ -39,6 +39,7 @@ function validarDatosTarjeta() {
   const fechaExp = document.getElementById('fecha-exp').value.trim();
   const codigoSeguridad = document.getElementById('codigo-seguridad').value.trim();
   const nombreTitular = document.getElementById('nombre-titular').value.trim();
+  const presupuestoMaximo = parseInt(localStorage.getItem('presupuestoMaximo').replace(/[^0-9]/g, ''));
 
   const fechaExpRegExp = /^(0[1-9]|1[0-2])\/\d{2}$/;
 
@@ -69,7 +70,7 @@ function validarDatosTarjeta() {
   }
 
   const totalPrecio = carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
-  if (totalPrecio > 1000000) {
+  if (totalPrecio > presupuestoMaximo) {
       alert('El total del carrito excede el presupuesto permitido.');
       return false;
   }
