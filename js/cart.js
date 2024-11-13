@@ -26,7 +26,7 @@ function cargarCarrito() {
   const checkboxDomicilio = document.getElementById('checkbox-domicilio');
   checkboxDomicilio.addEventListener('change', function() {
       if (this.checked) {
-          totalPrecio += 15000;
+          totalPrecio += 15000; // Costo de domicilio de $15,000
       } else {
           totalPrecio -= 15000;
       }
@@ -35,6 +35,84 @@ function cargarCarrito() {
 
   totalPrecioElement.textContent = `$${totalPrecio.toLocaleString('es-CO')}`;
 }
+
+// Función para validar los datos de la tarjeta de crédito y otras condiciones de la compra
+function validarDatosTarjeta() {
+  const tarjeta = document.getElementById('tarjeta').value.trim();
+  const fechaExp = document.getElementById('fecha-exp').value.trim();
+  const codigoSeguridad = document.getElementById('codigo-seguridad').value.trim();
+  const nombreTitular = document.getElementById('nombre-titular').value.trim();
+
+  // Expresión regular para validar la fecha en formato MM/AA
+  const fechaExpRegExp = /^(0[1-9]|1[0-2])\/\d{2}$/;
+
+  if (!tarjeta || tarjeta.length < 13 || tarjeta.length > 19 || isNaN(tarjeta)) {
+      alert('El número de tarjeta debe tener entre 13 y 19 dígitos numéricos.');
+      return false;
+  }
+
+  if (!fechaExp || !fechaExpRegExp.test(fechaExp)) {
+      alert('La fecha de expiración debe estar en el formato MM/AA.');
+      return false;
+  }
+
+  if (!codigoSeguridad || codigoSeguridad.length !== 3 || isNaN(codigoSeguridad)) {
+      alert('El código de seguridad debe tener exactamente 3 dígitos.');
+      return false;
+  }
+
+  if (!nombreTitular) {
+      alert('El nombre del titular es obligatorio.');
+      return false;
+  }
+
+  // Validar que la cantidad de productos no exceda 20
+  const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  if (carrito.length > 20) {
+      alert('El número de productos en el carrito no puede exceder los 20.');
+      return false;
+  }
+
+  // Validar que el presupuesto no se sobrepase (ejemplo: $1,000,000)
+  const totalPrecio = carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
+  if (totalPrecio > 1000000) {
+      alert('El total del carrito excede el presupuesto permitido.');
+      return false;
+  }
+
+  return true;
+}
+
+// Función para confirmar la compra con promesa
+document.getElementById('completar-compra').onclick = function() {
+  if (validarDatosTarjeta()) {
+      this.disabled = true; // Deshabilitar el botón para evitar múltiples envíos
+
+      new Promise((resolve, reject) => {
+          // Simular tiempo de respuesta aleatorio entre 2 a 3 segundos
+          const tiempo = Math.random() * (3000 - 2000) + 2000;
+          setTimeout(() => {
+              // Simular éxito de la transacción
+              const exito = Math.random() > 0.2; // 80% de probabilidad de éxito
+              if (exito) {
+                  resolve('Pago realizado con éxito.');
+              } else {
+                  reject('Hubo un error al procesar el pago.');
+              }
+          }, tiempo);
+      })
+      .then(mensaje => {
+          alert(mensaje);
+          localStorage.removeItem('carrito'); // Limpiar el carrito después de la compra
+          cargarCarrito(); // Recargar la tabla para que quede vacía
+          window.location.href = '../html/index.html'; // Redirigir al usuario a la página inicial
+      })
+      .catch(error => {
+          alert(error);
+          this.disabled = false; // Rehabilitar el botón si hay un error
+      });
+  }
+};
 
 // Función para eliminar un producto del carrito
 document.addEventListener('click', function(e) {
@@ -60,12 +138,19 @@ function limpiarCampos() {
   document.getElementById('nombre-titular').value = '';
 }
 
-// Función para confirmar la compra
-document.getElementById('completar-compra').onclick = function() {
-  alert('¡Compra completada exitosamente! Gracias por su compra.');
-  localStorage.removeItem('carrito'); // Limpiar el carrito después de la compra
-  cargarCarrito(); // Recargar la tabla para que quede vacía
-};
-
 // Inicializar la carga del carrito al cargar la página
 document.addEventListener('DOMContentLoaded', cargarCarrito);
+
+// Función para alternar la visibilidad del código de seguridad
+function alternarVisibilidad() {
+  const codigoSeguridadInput = document.getElementById('codigo-seguridad');
+  const icono = document.querySelector('.btn-ocultar');
+
+  if (codigoSeguridadInput.type === 'password') {
+      codigoSeguridadInput.type = 'text';
+      icono.textContent = '🙈'; // Cambiar el ícono a uno de "ocultar"
+  } else {
+      codigoSeguridadInput.type = 'password';
+      icono.textContent = '👁️'; // Cambiar el ícono a uno de "mostrar"
+  }
+}

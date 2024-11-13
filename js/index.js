@@ -45,17 +45,31 @@ const productos = [
 // Variables de control para la paginación
 let productosMostrados = 0;
 const incremento = 15;
-let mensajeMostrado = false; // Variable para controlar si el mensaje ya fue mostrado
+
+
+
+// Función auxiliar para crear una tarjeta de producto
+function crearTarjetaProducto(producto) {
+    const tarjeta = document.createElement('div');
+    tarjeta.classList.add('tarjeta-producto');
+
+    tarjeta.innerHTML = `
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+        <h3>${producto.nombre}</h3>
+        <p>Precio: $${producto.precio.toLocaleString('es-CO')}</p>
+        <p>Categoría: ${producto.categoria}</p>
+        <p>Proveedor: ${producto.proveedor}</p>
+        <button class="ver-detalle-btn" data-id="${producto.id}">Ver Detalle</button>
+    `;
+
+    return tarjeta;
+}
 
 // Función para renderizar productos
 function cargarProductos() {
     const productosContainer = document.getElementById('productos-container');
 
     if (productosMostrados >= productos.length) {
-        if (!mensajeMostrado) {
-            mostrarNotificacion('No hay más productos para cargar.');
-            mensajeMostrado = true; // Evita que el mensaje se muestre múltiples veces
-        }
         window.removeEventListener('scroll', manejarScroll);
         return;
     }
@@ -63,19 +77,7 @@ function cargarProductos() {
     const productosParaMostrar = productos.slice(productosMostrados, productosMostrados + incremento);
 
     productosParaMostrar.forEach(producto => {
-        const tarjeta = document.createElement('div');
-        tarjeta.classList.add('tarjeta-producto');
-
-        tarjeta.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>Precio: $${producto.precio.toLocaleString('es-CO')}</p>
-            <p>Categoría: ${producto.categoria}</p>
-            <p>Proveedor: ${producto.proveedor}</p>
-            <button class="ver-detalle-btn" data-id="${producto.id}">Ver Detalle</button>
-        `;
-
-        productosContainer.appendChild(tarjeta);
+        productosContainer.appendChild(crearTarjetaProducto(producto));
     });
 
     productosMostrados += incremento;
@@ -94,12 +96,14 @@ function mostrarDetalle(producto) {
     const modal = document.getElementById('detalle-producto');
     const contenidoDetalle = document.getElementById('contenido-detalle');
 
+    // Cargar toda la información del producto
     contenidoDetalle.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}">
         <h2>${producto.nombre}</h2>
-        <p>Precio: $${producto.precio.toLocaleString('es-CO')}</p>
-        <p>Categoría: ${producto.categoria}</p>
-        <p>Proveedor: ${producto.proveedor}</p>
+        <p><strong>Precio:</strong> $${producto.precio.toLocaleString('es-CO')}</p>
+        <p><strong>Categoría:</strong> ${producto.categoria}</p>
+        <p><strong>Proveedor:</strong> ${producto.proveedor}</p>
+        <p><strong>Stock Disponible:</strong> ${producto.stock}</p>
         <label for="cantidad">Cantidad:</label>
         <input type="number" id="cantidad" min="1" max="${producto.stock}" value="1">
         <button id="agregar-carrito">Agregar al carrito</button>
@@ -107,15 +111,18 @@ function mostrarDetalle(producto) {
 
     modal.style.display = 'flex';
 
+    // Funcionalidad para cerrar el modal
     document.querySelector('.cerrar-modal').onclick = function() {
         modal.style.display = 'none';
     };
 
+    // Funcionalidad del botón "Agregar al carrito"
     document.getElementById('agregar-carrito').onclick = function() {
         agregarAlCarrito(producto);
         modal.style.display = 'none';
     };
 }
+
 
 // Función para agregar un producto al carrito
 function agregarAlCarrito(producto) {
@@ -144,34 +151,16 @@ function agregarAlCarrito(producto) {
     alert(`${producto.nombre}, Added to the cart! 🛒`);
 }
 
-// Función para mostrar una notificación
-function mostrarNotificacion(mensaje) {
-    const notificacion = document.createElement('div');
-    notificacion.classList.add('notificacion');
-    notificacion.textContent = mensaje;
-
-    document.body.appendChild(notificacion);
-
-    setTimeout(() => {
-        notificacion.remove();
-    }, 3000);
-}
-
 // Cargar los primeros productos al iniciar
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
     window.addEventListener('scroll', manejarScroll);
 });
 
-// Función de scroll para cargar más productos y mostrar notificación al final
+// Función de scroll para cargar más productos
 function manejarScroll() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
         cargarProductos();
-
-        if (productosMostrados >= productos.length && !mensajeMostrado) {
-            mostrarNotificacion('No hay más productos para cargar.');
-            mensajeMostrado = true;
-        }
     }
 }
 
@@ -186,17 +175,19 @@ document.getElementById('completar-compra').onclick = function() {
 
 // Función de filtro de productos
 document.getElementById('filtrar-btn').onclick = function() {
-    const categoriaSeleccionada = document.getElementById('filtro1').value;
-    const proveedorSeleccionado = document.getElementById('filtro-proveedor').value;
+    const categoriaSeleccionada = document.getElementById('filtro-categoria').value.toLowerCase();
+    const nombreIngresado = document.getElementById('filtro-nombre').value.toLowerCase();
 
     let productosFiltrados = productos;
 
+    // Filtro por categoría (select)
     if (categoriaSeleccionada) {
-        productosFiltrados = productosFiltrados.filter(producto => producto.categoria === categoriaSeleccionada);
+        productosFiltrados = productosFiltrados.filter(producto => producto.categoria.toLowerCase() === categoriaSeleccionada);
     }
 
-    if (proveedorSeleccionado) {
-        productosFiltrados = productosFiltrados.filter(producto => producto.proveedor === proveedorSeleccionado);
+    // Filtro por nombre (input de texto)
+    if (nombreIngresado) {
+        productosFiltrados = productosFiltrados.filter(producto => producto.nombre.toLowerCase().includes(nombreIngresado));
     }
 
     mostrarProductosFiltrados(productosFiltrados);
@@ -216,27 +207,50 @@ function mostrarProductosFiltrados(productosFiltrados) {
     }
 
     productosFiltrados.forEach(producto => {
-        const tarjeta = document.createElement('div');
-        tarjeta.classList.add('tarjeta-producto');
-
-        tarjeta.innerHTML = `
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>Precio: $${producto.precio.toLocaleString('es-CO')}</p>
-            <p>Categoría: ${producto.categoria}</p>
-            <p>Proveedor: ${producto.proveedor}</p>
-            <button class="ver-detalle-btn" data-id="${producto.id}">Ver Detalle</button>
-        `;
-
-        productosContainer.appendChild(tarjeta);
+        productosContainer.appendChild(crearTarjetaProducto(producto));
     });
 }
 
 // Funcionalidad para limpiar los filtros y recargar todos los productos
 document.getElementById('limpiar-filtros').onclick = function() {
-    document.getElementById('filtro1').value = '';
-    document.getElementById('filtro-proveedor').value = '';
+    document.getElementById('filtro-categoria').value = '';
+    document.getElementById('filtro-nombre').value = '';
     productosMostrados = 0; // Reiniciar la cantidad de productos mostrados
-    mensajeMostrado = false; // Reiniciar la variable de mensaje mostrado
     cargarProductos(); // Cargar los productos de nuevo
 };
+
+
+function cargarProductos() {
+    const productosContainer = document.getElementById('productos-container');
+
+    if (productosMostrados >= productos.length) {
+        if (!document.getElementById('mensaje-fin-productos')) {
+            const mensajeFinal = document.createElement('div');
+            mensajeFinal.id = 'mensaje-fin-productos';
+            mensajeFinal.textContent = 'No hay más productos para cargar.';
+            mensajeFinal.style.textAlign = 'center';
+            mensajeFinal.style.fontSize = '1.5rem';
+            mensajeFinal.style.color = '#333';
+            mensajeFinal.style.padding = '15px';
+            mensajeFinal.style.marginTop = '20px';
+
+            productosContainer.appendChild(mensajeFinal);
+        }
+        window.removeEventListener('scroll', manejarScroll);
+        return;
+    }
+
+    const productosParaMostrar = productos.slice(productosMostrados, productosMostrados + incremento);
+
+    productosParaMostrar.forEach(producto => {
+        productosContainer.appendChild(crearTarjetaProducto(producto));
+    });
+
+    productosMostrados += incremento;
+}
+
+// Ajuste del botón de completar compra para incluir la imagen del carrito
+document.getElementById('completar-compra').innerHTML = `
+    <img src="../img/iconos/shopping-cart.png" alt="Carrito" style="width: 20px; vertical-align: middle; margin-right: 5px;">
+    Completar Compra
+`;

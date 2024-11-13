@@ -15,26 +15,20 @@
 		<nav class="navegador">
 			<a href="../html/registry.html"><img src="../img/logo.png" alt="Logo" id="logo"></a>
 			<h1>PREMIUM BIKES</h1>
-			<select id="filtro1">
-			  <option value="">Filtrar por Categoría</option>
-			  <option value="suplemento">Suplemento</option>
-			  <option value="repuesto">Repuesto</option>
-			  <option value="montaña">Montaña</option>
-			  <option value="carretera">Carretera</option>
-			  <option value="ciudad">Ciudad</option>
-			</select>
-			<select id="filtro-proveedor">
-			  <option value="">Filtrar por Proveedores</option>
-			  <option value="Sport Pro">Sport Pro</option>
-			  <option value="City Wheels">City Wheels</option>
-			  <option value="Velocity Co.">Velocity Co.</option>
-			  <option value="Green Wheels">Green Wheels</option>
-			  <option value="Alpine Sports">Alpine Sports</option>
-			</select>
-			<button id="filtrar-btn">Filtrar</button>
-			<button id="limpiar-filtros">Limpiar Filtros</button>
+			<select id="filtro-categoria">
+				<option value="">Filtrar por Categoría</option>
+				<option value="montaña">Montaña</option>
+				<option value="carretera">Carretera</option>
+				<option value="ciudad">Ciudad</option>
+				<option value="repuesto">Repuesto</option>
+				<option value="suplemento">Suplemento</option>
+			  </select>
+			  
+			  <input type="text" id="filtro-nombre" placeholder="Buscar por nombre">
+			  <button id="filtrar-btn">Filtrar</button>
+			  <button id="limpiar-filtros">Limpiar Filtros</button>
+			  
 			<div> 
-				<a href="../html/cart.html" id="cart"><img src="../img/iconos/shopping-cart.png" alt=""><span id="cuenta-carrito">0</span></a>
 			</div>
 			<button id="cancelar-compra">Cancelar Compra</button>
 			<button id="completar-compra">Completar Compra</button>

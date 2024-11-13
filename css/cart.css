@@ -7,15 +7,21 @@ body {
   padding: 0;
 }
 
+.sombra-estandar {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.fondo-blanco {
+  background-color: #ffffff;
+}
+
 /* Header */
 .navegador {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background-color: #ffffff;
   border-bottom: 2px solid #ddd;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 #logo {
@@ -30,7 +36,6 @@ body {
   color: #333;
 }
 
-
 /* Main */
 .principal {
   display: flex;
@@ -41,12 +46,20 @@ body {
   margin: auto;
 }
 
-.tabla-carrito {
-  flex: 2;
+.tabla-carrito,
+.detalle-pago {
   background-color: #fff;
-  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.tabla-carrito {
+  flex: 8;
+}
+
+.detalle-pago {
+  flex: 3;
+  padding: 60px;
 }
 
 table {
@@ -64,7 +77,6 @@ th {
 }
 
 td {
-
   padding: 15px 10px;
   text-align: center;
   border-bottom: 1px solid #ddd;
@@ -72,25 +84,16 @@ td {
 
 /* Ajuste para las imágenes de los productos */
 td img {
-  max-width: 350px; /* Ajusta este valor según tus necesidades */
+  max-width: 100px;
   height: auto;
   border-radius: 5px; /* Opcional, para dar bordes redondeados */
 }
-
 
 tfoot td {
   font-weight: bold;
 }
 
 /* Detalle de pago */
-.detalle-pago {
-  flex: 1;
-  background-color: #fff;
-  padding: 60px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
 .detalle-pago label {
   display: block;
   margin-top: 12px;
@@ -104,7 +107,6 @@ tfoot td {
   margin-top: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  
 }
 
 .input-codigo {
@@ -125,19 +127,16 @@ tfoot td {
 button {
   margin-top: 10px;
   padding: 10px 15px;
-  width: 100%;
+  width: auto;
   border: none;
   border-radius: 5px;
   color: #fff;
   cursor: pointer;
-  width: auto; 
-
   transition: background-color 0.3s;
 }
 
 #completar-compra {
   background-color: #ff4500; /* Naranja */
-  width: auto; 
 }
 
 #completar-compra:hover {
@@ -159,5 +158,4 @@ footer {
   text-align: center;
   padding: 15px 0;
   margin-top: 20px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
