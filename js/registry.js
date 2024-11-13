@@ -42,8 +42,6 @@ iniciarCompra.addEventListener("click", function(validar) {
     window.location.href = "../html/index.html";
 });
 
-
-
 function limpiarCampos() {
     document.getElementById("nComprador").value = "";
     document.getElementById("pMaximo").value = "";

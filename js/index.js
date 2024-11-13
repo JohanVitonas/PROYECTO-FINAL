@@ -42,13 +42,9 @@ const productos = [
   { id: 40, nombre: "Juego de Herramientas Multiuso", precio: 110000, categoria: "repuesto", proveedor: "BikeTools", stock: 50, imagen: "../img/productos/40.jpg" }
 ];
 
-// Variables de control para la paginación
 let productosMostrados = 0;
 const incremento = 15;
 
-
-
-// Función auxiliar para crear una tarjeta de producto
 function crearTarjetaProducto(producto) {
     const tarjeta = document.createElement('div');
     tarjeta.classList.add('tarjeta-producto');
@@ -65,7 +61,6 @@ function crearTarjetaProducto(producto) {
     return tarjeta;
 }
 
-// Función para renderizar productos
 function cargarProductos() {
     const productosContainer = document.getElementById('productos-container');
 
@@ -83,7 +78,6 @@ function cargarProductos() {
     productosMostrados += incremento;
 }
 
-// Función para mostrar detalles del producto en un modal
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('ver-detalle-btn')) {
         const productoId = e.target.getAttribute('data-id');
@@ -96,7 +90,6 @@ function mostrarDetalle(producto) {
     const modal = document.getElementById('detalle-producto');
     const contenidoDetalle = document.getElementById('contenido-detalle');
 
-    // Cargar toda la información del producto
     contenidoDetalle.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}">
         <h2>${producto.nombre}</h2>
@@ -111,12 +104,10 @@ function mostrarDetalle(producto) {
 
     modal.style.display = 'flex';
 
-    // Funcionalidad para cerrar el modal
     document.querySelector('.cerrar-modal').onclick = function() {
         modal.style.display = 'none';
     };
 
-    // Funcionalidad del botón "Agregar al carrito"
     document.getElementById('agregar-carrito').onclick = function() {
         agregarAlCarrito(producto);
         modal.style.display = 'none';
@@ -124,7 +115,6 @@ function mostrarDetalle(producto) {
 }
 
 
-// Función para agregar un producto al carrito
 function agregarAlCarrito(producto) {
     const cantidad = document.getElementById('cantidad').value;
 
@@ -151,20 +141,17 @@ function agregarAlCarrito(producto) {
     alert(`${producto.nombre}, Added to the cart! 🛒`);
 }
 
-// Cargar los primeros productos al iniciar
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
     window.addEventListener('scroll', manejarScroll);
 });
 
-// Función de scroll para cargar más productos
 function manejarScroll() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
         cargarProductos();
     }
 }
 
-// Botones de la barra de navegación
 document.getElementById('cancelar-compra').onclick = function() {
     window.location.href = '../html/registry.html';
 };
@@ -173,19 +160,16 @@ document.getElementById('completar-compra').onclick = function() {
     window.location.href = '../html/cart.html';
 };
 
-// Función de filtro de productos
 document.getElementById('filtrar-btn').onclick = function() {
     const categoriaSeleccionada = document.getElementById('filtro-categoria').value.toLowerCase();
     const nombreIngresado = document.getElementById('filtro-nombre').value.toLowerCase();
 
     let productosFiltrados = productos;
 
-    // Filtro por categoría (select)
     if (categoriaSeleccionada) {
         productosFiltrados = productosFiltrados.filter(producto => producto.categoria.toLowerCase() === categoriaSeleccionada);
     }
 
-    // Filtro por nombre (input de texto)
     if (nombreIngresado) {
         productosFiltrados = productosFiltrados.filter(producto => producto.nombre.toLowerCase().includes(nombreIngresado));
     }
@@ -193,7 +177,6 @@ document.getElementById('filtrar-btn').onclick = function() {
     mostrarProductosFiltrados(productosFiltrados);
 };
 
-// Función para mostrar los productos filtrados
 function mostrarProductosFiltrados(productosFiltrados) {
     const productosContainer = document.getElementById('productos-container');
     productosContainer.innerHTML = '';
@@ -211,12 +194,11 @@ function mostrarProductosFiltrados(productosFiltrados) {
     });
 }
 
-// Funcionalidad para limpiar los filtros y recargar todos los productos
 document.getElementById('limpiar-filtros').onclick = function() {
     document.getElementById('filtro-categoria').value = '';
     document.getElementById('filtro-nombre').value = '';
-    productosMostrados = 0; // Reiniciar la cantidad de productos mostrados
-    cargarProductos(); // Cargar los productos de nuevo
+    productosMostrados = 0; 
+    cargarProductos(); 
 };
 
 
@@ -249,8 +231,9 @@ function cargarProductos() {
     productosMostrados += incremento;
 }
 
-// Ajuste del botón de completar compra para incluir la imagen del carrito
-document.getElementById('completar-compra').innerHTML = `
-    <img src="../img/iconos/shopping-cart.png" alt="Carrito" style="width: 20px; vertical-align: middle; margin-right: 5px;">
-    Completar Compra
-`;
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('completar-compra').innerHTML = `
+        <img src="../img/iconos/shopping-cart.png" alt="Carrito" class="icono-carrito">
+        Completar Compra
+    `;
+});
