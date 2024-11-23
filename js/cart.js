@@ -97,7 +97,7 @@ document.getElementById('completar-compra').onclick = function() {
           alert(mensaje);
           localStorage.removeItem('carrito'); 
           cargarCarrito(); 
-          window.location.href = '../html/index.html'; 
+          window.location.href = '../html/registry.html'; 
       })
       .catch(error => {
           alert(error);
